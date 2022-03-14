@@ -1,0 +1,23 @@
+{
+    "1":{"cost": 20, "profit": 5},
+    "2":{"cost": 30, "profit": 10},
+    "3":{"cost": 50, "profit": 15},
+    "4":{"cost": 70, "profit": 20},
+    "5":{"cost": 60, "profit": 17},
+    "6":{"cost": 80, "profit": 25},
+    "7":{"cost": 22, "profit": 7},
+    "8":{"cost": 26, "profit": 11},
+    "9":{"cost": 48, "profit": 13},
+    "10":{"cost": 34, "profit": 27},
+    "11":{"cost": 42, "profit": 17},
+    "12":{"cost": 110, "profit": 9},
+    "13":{"cost": 38, "profit": 23},
+    "14":{"cost": 14, "profit": 1},
+    "15":{"cost": 18, "profit": 3},
+    "16":{"cost": 8, "profit": 8},
+    "17":{"cost": 4, "profit": 12},
+    "18":{"cost": 10, "profit": 14},
+    "19":{"cost": 24, "profit": 21},
+    "20":{"cost": 114, "profit": 18}
+
+}
