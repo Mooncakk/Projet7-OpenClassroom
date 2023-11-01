@@ -1,46 +1,48 @@
 import pandas as pd
 import time
 
+def stock_portfolio(price, profit, money, n):
 
-def knapSack(W, wt, val, n):
-    # Base Case
-    if n == 0 or W == 0:
+    if n == 0 or money == 0:
         return 0
-
-    # If weight of the nth item is
-    # more than Knapsack of capacity W,
-    # then this item cannot be included
-    # in the optimal solution
-    if (wt[n - 1] > W):
-        return knapSack(W, wt, val, n - 1)
-
-    # return the maximum of two cases:
-    # (1) nth item included
-    # (2) not included
-    else:
-        return max(
-            val[n - 1] + knapSack(
-                W - wt[n - 1], wt, val, n - 1),
-            knapSack(W, wt, val, n - 1))
+    if t[n][money] != -1:
+        return round((t[n][money]), 2)
 
 
-# end of function knapSack
+    if price[n - 1] <= money:
+        t[n][money] = max(
+            profit[n - 1] + stock_portfolio(
+                price, profit, money - price[n - 1], n - 1),
+            stock_portfolio(price, profit, money, n - 1))
+        return round((t[n][money]), 2)
+    elif price[n - 1] > money:
+        t[n][money] = stock_portfolio(price, profit, money, n - 1)
+        return round((t[n][money]), 2)
 
 
-# Driver Code
 if __name__ == '__main__':
-    # Fichier csv profit = [60, 100, 120]
     start_time = time.time()
     data = pd.read_csv('./Shares.csv', delimiter=';')
-    data["Profit"] = data["Cout"] * data["Bénéfice"] / 100
+    data['Net_Profit'] = data.Cout.values * data.Bénéfice.values / 100
+    #print(data)
+    profit = data.Net_Profit.values
+    price = data.Cout.values
+    share = data.Actions.values
+    sh_pr = []
+    for shar, prof in zip(share, profit):
+        sh_pr.append((shar, prof))
 
-    weight = data.Cout.values
-
-    profit = data.Profit.values
+    money = 500
     n = len(profit)
-    W = 500
+    print(sh_pr)
 
-    print(knapSack(W, weight, profit, n))
+    t = [[-1 for i in range(money + 1)] for j in range(n + 1)]
+    final_profit = stock_portfolio(price, profit, money, n)
+
+    print(f"Le meilleur investissement est la combinaison d'actions : ? Actions ? ")
+    print(f"Avec un bénéfice de : {final_profit}€ après 2 ans")
+    print(f"Pour un coût d'achat total de: ? Price ?€")
     print(f'---{time.time() - start_time} secondes---')
 
-# This code is contributed by Nikhil Kumar Singh
+'''Extraire les actions choisi par le script'''
+'''Extraire le montant utilisé'''
